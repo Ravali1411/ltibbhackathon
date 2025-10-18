@@ -1,7 +1,7 @@
 # ltibloodbank
 
 # Setting up Ubuntu Machine
- 
+
 sudo apt-get update -y
 
 sudo apt-get install apache2 -y
@@ -42,7 +42,6 @@ INSERT INTO `donors` (`fname`, `lname`, `mobileno`, `city`, `bfrom`, `bto`, `dob
 ('Srinivas', 'Thota', '9812723411', 'Mumbai', '2022-04-19', '2022-10-07', '1992-07-22', 'B_Positive'), 
 ('Zaheer', 'Khan', '7788678987', 'Chennai', '2022-09-11', '2022-12-19', '1998-11-11', 'A_Positive');
 
-
 # Create table users and assign Values for Signin/Login
 
 CREATE TABLE `users` (
@@ -51,22 +50,19 @@ CREATE TABLE `users` (
   `password` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 # Assign values to users table
 
-    INSERT INTO `users` (`username`, `name`, `password`) VALUES
-    ('yssyogesh', 'Yogesh Singh', '12345'),
-    ('bsonarika', 'Sonarika Bhadoria', '12345'),
-    ('vishal', 'Vishal Sahu', '12345'),
-    ('prashanth', 'Prashanth Katkam', '12345'),
-    ('vijay', 'Vijay mourya', '12345');
-    
+INSERT INTO `users` (`username`, `name`, `password`) VALUES
+('yssyogesh', 'Yogesh Singh', '12345'),
+('bsonarika', 'Sonarika Bhadoria', '12345'),
+('vishal', 'Vishal Sahu', '12345'),
+('prashanth', 'Prashanth Katkam', '12345'),
+('vijay', 'Vijay mourya', '12345');
 
 # Insert Single Values to a Table
 
 INSERT INTO `users` (`username`, `name`, `password`) VALUES
 ('prashanth', 'Prashanth Katkam', '12345');
-
 
 #Admin Table
 
@@ -85,12 +81,10 @@ INSERT INTO `admin` (`username`, `name`, `password`) VALUES
 GRANT ALL PRIVILEGES ON customers.* TO 'root'@'%' IDENTIFIED BY 'admin123';
 FLUSH PRIVILEGES;
 
-
 =================================================================================================
-                                #IMP Points
+# IMP Points
 -------------------------------------------------------------------------------------------------
 if connection from linux ec2 to DB is not connecting, then add inbound rule to DB SG as AURORA and assign SG of EC2 Instance.
-
 
 #DB Endpoint needs to be added
 
@@ -109,8 +103,7 @@ Hackathon Repo consists of latest code
 
 Add Endpoint URL of the DB to the congig.php and also for the pages which need the DB Details
 
-If the Database or Table name is changes please change it accordingly.
-
+If the Database or Table name is changed please change it accordingly.
 
 Example: donate-blood.php, find-donor.php, config.php, signup.php, search.php {login}.
 
@@ -127,23 +120,13 @@ git clone --branch branchname URL
 
 sudo git init
 
-sudo git remote add origin "https://github.com/prashanthkatam/ltibloodbank.git"
-
-sudo git remote add origin "https://github.com/prashanthkatam/ltibloodbankrepo.git"
-
-sudo git remote add origin "https://github.com/prashanthkatam/Hackathon.git"
+sudo git remote add origin "https://github.com/Ravali1411/blood-bank-app.git"
 
 sudo git remote -v
 
 sudo git add .
 
-sudo git commit -m ""
-
-git remote set-url origin https://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@github.com/prashanthkatam/ltibloodbank.git
-
-git remote set-url origin https://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@github.com/prashanthkatam/Hackathon.git
-
-git remote set-url origin https://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@github.com/prashanthkatam/Hackathon.git
+sudo git commit -m "Initial commit without secrets"
 
 sudo git push origin master
 
@@ -153,7 +136,7 @@ sudo git init
 
 sudo git add .
 
-sudo git commit -m ""
+sudo git commit -m "Update code"
 
 sudo git push origin master
 
@@ -179,27 +162,27 @@ sudo apt install git
 
 # Push Apache Logs to Cloud Watch
 
-1.	Create an EC2 Instance
+1. Create an EC2 Instance
 
-2.	Create a Role with CloudWatchAgentServerPolicy and attach to EC2 Instance.
+2. Create a Role with CloudWatchAgentServerPolicy and attach to EC2 Instance.
 
-3.	Update the Instance
+3. Update the Instance
 
 sudo apt-get update
 
-4.	Install Apache2 or any other web server on the Ec2 Instance
+4. Install Apache2 or any other web server on the EC2 Instance
 
-Sudo apt-get install apache2
+sudo apt-get install apache2
 
-5.	Download the Package using wget
+5. Download the Package using wget
 
 sudo wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
 
-6.	Install CloudWatch Agent 
+6. Install CloudWatch Agent 
 
 sudo dpkg -i -E ./amazon-cloudwatch-agent.deb
 
-7.	Create configuration 
+7. Create configuration 
 
 vi /opt/aws/amazon-cloudwatch-agent/bin/config.json
 
@@ -222,11 +205,11 @@ vi /opt/aws/amazon-cloudwatch-agent/bin/config.json
      }
 }
 
-8.	Command to Start CloudWatch Service
+8. Command to Start CloudWatch Service
 
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json -s
 
-9.	Now Navigate the AWS Cosole and go to Cloud Watch you can see the log group as mentioned in the config.json and the logs will be flown as the path given in config.json
+9. Now Navigate the AWS Console and go to Cloud Watch you can see the log group as mentioned in the config.json and the logs will be flown as the path given in config.json
 
 [NOTE: Check for the config.json syntax for the brackets, Create and assign CloudWatchAgentServerPolicy to Instance]
 
@@ -238,9 +221,9 @@ DELETE FROM Customers;
 
 show columns from donors;
 
-
 <html>
   <body>
     Hi this is webpage after making changes in GitHub Repo and CI CD Made visible here
   </body>
 </html>
+
